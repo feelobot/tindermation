@@ -4,7 +4,7 @@ tindermation
 This tool is an automated script for swiping right on every single tinder user that it encounters. I just made it as a proof of concepts to my friends on how easy it is to get at least 20 matches a day and if you aren't a complete idiot at least a couple dates a week.
 
 Video of it in action:
-[![Tindermation](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=Kj3p1tfjKiQ)
+[![Tindermation](http://img.youtube.com/vi/Kj3p1tfjKiQ/0.jpg)](http://www.youtube.com/watch?v=Kj3p1tfjKiQ)
 
 ## How to use:
 First off this is only working on android phones because they behave better on real devices but you can easily do this in the cloud on iOS devices and even mock your geolocation to anywhere you like.
