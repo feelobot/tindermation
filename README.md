@@ -26,6 +26,8 @@ appium &
 You can download tinder from any trustworthy site: http://www38.zippyshare.com/d/75420186/46934/com.tinder-3.2.0-APK4Fun.com.apk
 or use an apk extractor to get it from your phone
 
+clone this repo
 ```ruby
+bundle
 ruby tindermation.rb
 ```
