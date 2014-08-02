@@ -1,7 +1,7 @@
 tindermation
 ==========
 ## Description
-This tool is an automated script for swiping right on every single tinder user that it encounters. I just made it as a proof of concepts to my friends on how easy it is to get at least 20 matches a day and if you aren't a complete idiot at least a couple dates a week.
+This tool is an automated script for swiping right on every single tinder user that it encounters. I just made it as a proof of concept to my friends on how I can tinder while sleeping if I wanted to.
 
 Video of it in action:
 
