@@ -12,7 +12,7 @@ Video of it in action:
 [![Tindermation](http://img.youtube.com/vi/Kj3p1tfjKiQ/0.jpg)](http://www.youtube.com/watch?v=Kj3p1tfjKiQ)
 
 ## Example output:
-```sh
+```txt
 Looking for girls to match...
 #############################################
 NO MORE GIRLS :(
