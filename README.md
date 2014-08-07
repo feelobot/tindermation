@@ -1,5 +1,9 @@
 tindermation
 ==========
+** UPDATE **
+
+The script now sends a corny joke to any of your new matches and runs on an endless loop:
+
 ## Description
 This tool is an automated script for swiping right on every single tinder user that it encounters. I just made it as a proof of concept to my friends on how I can tinder while sleeping if I wanted to.
 
@@ -30,4 +34,34 @@ clone this repo
 ```ruby
 bundle
 ruby tindermation.rb
+```
+
+Here is a general example of the code:
+```ruby
+i=0
+while true do
+  begin
+    puts "Looking for girls to match..."
+    like_button.click
+    puts "Liked Girl #: #{i+=1}"
+  rescue Selenium::WebDriver::Error::NoSuchElementError
+    puts "#############################################"
+    puts "NO MORE GIRLS :("
+    puts "CHECKING MESSAGES"
+    puts "#############################################"
+    click_msgs_btn
+    begin
+      match = text("Matched on")
+      puts match
+      match.click
+      send_message(get_corny_joke)
+      go_to_tinder_home
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+      puts "#############################################"
+      puts "NO MORE MATCHES :("
+      puts "#############################################"
+      go_to_tinder_home
+    end
+  end
+end
 ```
