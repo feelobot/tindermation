@@ -38,6 +38,7 @@ Appium.promote_appium_methods Object
 
 def get_corny_joke
   page = Nokogiri::HTML(open("http://www.pickuplinegenerator.com/"))
+  puts "# joke: #{page.css("h2").text}"
   page.css("h2").text
 end
 
@@ -46,8 +47,11 @@ def like_button
 end
 
 def send_message(text)
+  sleep 1
   find_element(:xpath, "//android.view.View[1]/android.support.v4.view.ViewPager[1]/android.widget.EditText[1]").send_keys(text)
+  sleep 1
   driver.execute_script 'mobile: tap', :x => 716, :y => 577, :fingers => 1, :tapCount => 1, :duration => 0.5
+  driver.execute_script 'mobile: tap',:x => 24, :y => 100, :fingers => 1, :tapCount => 1, :duration => 0.5
 end
 
 def matches?
@@ -55,13 +59,15 @@ def matches?
 end
 
 def click_msgs_btn
-  find_element(:xpath, "//android.view.View[1]/android.support.v4.view.ViewPager[1]/android.widget.RelativeLayout[1]/android.widget.ImageButton[4]").click
+  driver.execute_script 'mobile: tap', :x => 287, :y => 96, :fingers => 1, :tapCount => 1, :duration => 0.5
+
 end
 
 def go_to_tinder_home
   driver.execute_script 'mobile: tap', :x => 105, :y => 116, :fingers => 1, :tapCount => 1, :duration => 0.5
 end
 
+set_wait(5)
 i=0
 while true do
   begin
@@ -69,24 +75,31 @@ while true do
     like_button.click
     puts "Liked Girl #: #{i+=1}"
   rescue Selenium::WebDriver::Error::NoSuchElementError
-    puts "#############################################"
-    puts "NO MORE GIRLS :("
-    puts "CHECKING MESSAGES"
-    puts "#############################################"
-    click_msgs_btn
     begin
-      match = text("Matched on")
-      match.click
-      send_message(get_corny_joke)
-      go_to_tinder_home
+      puts "Can't Find <3, is there a match?"
+      find_element(:xpath,"//android.widget.LinearLayout[2]/android.widget.TextView[1]").click
     rescue Selenium::WebDriver::Error::NoSuchElementError
       puts "#############################################"
-      puts "NO MORE MATCHES :("
+      puts "NO MATCH and NO MORE GIRLS :("
+      puts "CHECKING MESSAGES FOR MATCHES"
       puts "#############################################"
-      go_to_tinder_home
+      click_msgs_btn
+      e = ""
+      while true do
+        begin
+          match = text("Matched on")
+          match.click
+          send_message(get_corny_joke)
+        rescue Selenium::WebDriver::Error::NoSuchElementError => e
+          puts "#############################################"
+          puts "NO MORE MATCHES :("
+          puts "#############################################"
+          go_to_tinder_home
+          break
+        end
+      end
     end
   end
 end
-driver_quit
 
 
